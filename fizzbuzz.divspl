@@ -1,0 +1,4 @@
+#!env/bin/divspl
+1...15
+fizz=3
+buzz=5

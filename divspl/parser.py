@@ -1,27 +1,12 @@
 from rply import ParserGenerator
-from boxes import AssignmentBox, IntBox, ProgramBox, RangeBox, WordBox
+from boxes import AssignmentBox, ProgramBox, RangeBox
 
-pg = ParserGenerator(["ELLIPSIS", "ASSIGNMENT", "NUMBER", "WORD"])
+pg = ParserGenerator(["ELLIPSIS", "EQUALS", "NUMBER", "WORD"])
 
 
 @pg.production("main : range assignments")
 def main(p):
     return ProgramBox(p[0], p[1])
-
-
-@pg.production("range : num ELLIPSIS num")
-def range_op(p):
-    return RangeBox(p[0], p[2])
-
-
-@pg.production("num : NUMBER")
-def expr_number(p):
-    return IntBox(int(p[0].value))
-
-
-@pg.production("word : WORD")
-def expr_word(p):
-    return WordBox(p[0].value)
 
 
 @pg.production("assignments : assignments assignment")
@@ -32,8 +17,14 @@ def expr_assignments(p):
     return []
 
 
-@pg.production("assignment : word ASSIGNMENT num")
+@pg.production("assignment : WORD EQUALS NUMBER")
 def assignment_op(p):
-    return AssignmentBox(p[0], p[2])
+    return AssignmentBox(p[0].value, int(p[2].value))
+
+
+@pg.production("range : NUMBER ELLIPSIS NUMBER")
+def range_op(p):
+    return RangeBox(int(p[0].value), int(p[2].value))
+
 
 parser = pg.build()

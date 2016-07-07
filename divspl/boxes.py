@@ -8,7 +8,7 @@ class ProgramBox(BaseBox):
 
     def eval(self):
         return "\n".join(
-            "".join([assignment.eval(i) for assignment in self.assignment_boxes]) or str(i)
+            "".join(assignment.eval(i) for assignment in self.assignment_boxes) or str(i)
             for i in self.range_box.eval()
         ) + "\n"
 
@@ -19,8 +19,8 @@ class AssignmentBox(BaseBox):
         self.number = number
 
     def eval(self, i):
-        if not i % int(self.number.eval()):
-            return self.word.eval()
+        if not i % int(self.number):
+            return self.word
         return ''
 
 
@@ -30,20 +30,4 @@ class RangeBox(BaseBox):
         self.high = high
 
     def eval(self):
-        return range(self.low.eval(), self.high.eval() + 1)
-
-
-class IntBox(BaseBox):
-    def __init__(self, value):
-        self.value = value
-
-    def eval(self):
-        return int(self.value)
-
-
-class WordBox(BaseBox):
-    def __init__(self, value):
-        self.value = value
-
-    def eval(self):
-        return self.value
+        return range(self.low, self.high + 1)

@@ -4,7 +4,7 @@ lg = LexerGenerator()
 
 lg.add("ELLIPSIS", r"\.\.\.")
 lg.add("NUMBER", r"\d+")
-lg.add("ASSIGNMENT", r"=")
+lg.add("EQUALS", r"=")
 lg.add("WORD", r"[a-z]+")
 
 lg.ignore(r"\s+")  # Ignore whitespace

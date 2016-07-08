@@ -1,7 +1,7 @@
-divspt (Dustin Ingram's Very Special Programming Language)
+divspl (Dustin Ingram's Very Special Programming Language)
 ==========================================================
 
-An implementation of a FizzBuzz DSL using [rply](https://github.com/alex/rply).
+An implementation of a FizzBuzz DSL using `rply <https://github.com/alex/rply>`_.
 
 Installation
 ============

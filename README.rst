@@ -8,14 +8,22 @@ Installation
 
 ::
 
-    pip install divspl
+    $ pip install divspl
+
+Or for local development:
+
+::
+
+    $ virtualenv env
+    $ source env/bin/activate
+    $ python setup.py install
 
 Usage
 =====
 
 ::
 
-    divspl [filename]
+    $ divspl [filename]
 
 Where::
 
@@ -28,7 +36,7 @@ Use the interpreter to execute valid DIVSPL code:
 
 ::
 
-    divspl fizzbuzz.divspl
+    $ divspl fizzbuzz.divspl
 
 Or use it as a shebang:
 
@@ -43,7 +51,7 @@ Then:
 
 ::
 
-    ./fizzbuzz.divspl
+    $ ./fizzbuzz.divspl
 
 Description
 ===========

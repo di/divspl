@@ -7,10 +7,10 @@ def readme():
 
 setup(
     name='divspl',
-    version='0.0.1',
+    version='0.0.2',
     description="Dustin Ingram's Very Special Programming Language.",
     long_description=readme(),
-    url='https://github.com/di/dustiningramsveryspecialprogramminglanguage',
+    url='https://github.com/di/divspl',
     author='Dustin Ingram',
     author_email='github@dustingram.com',
     keywords='fizz buzz rply',

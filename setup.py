@@ -19,7 +19,7 @@ setup(
     },
     license='MIT',
     packages=['divspl'],
-    install_requires=['divspl'],
+    install_requires=['rply'],
     classifiers=['Intended Audience :: Developers'],
     zip_safe=False,
 )

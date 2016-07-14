@@ -10,10 +10,12 @@ def main(p):
 
 
 @pg.production("assignments : assignments assignment")
-@pg.production("assignments : ")
 def expr_assignments(p):
-    if p:
-        return p[0] + [p[1]]
+    return p[0] + [p[1]]
+
+
+@pg.production("assignments : ")
+def expr_empty_assignments(p):
     return []
 
 

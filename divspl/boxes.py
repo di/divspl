@@ -1,7 +1,7 @@
 from rply.token import BaseBox
 
 
-class ProgramBox(BaseBox):
+class MainBox(BaseBox):
     def __init__(self, range_box, assignment_boxes):
         self.range_box = range_box
         self.assignment_boxes = assignment_boxes

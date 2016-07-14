@@ -1,12 +1,12 @@
 from rply import ParserGenerator
-from boxes import AssignmentBox, ProgramBox, RangeBox
+from boxes import AssignmentBox, MainBox, RangeBox
 
 pg = ParserGenerator(["ELLIPSIS", "EQUALS", "NUMBER", "WORD"])
 
 
 @pg.production("main : range assignments")
 def main(p):
-    return ProgramBox(p[0], p[1])
+    return MainBox(p[0], p[1])
 
 
 @pg.production("assignments : assignments assignment")

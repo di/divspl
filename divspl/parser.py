@@ -1,5 +1,7 @@
 from rply import ParserGenerator
-from boxes import AssignmentBox, AssignmentsBox, MainBox, RangeBox, IntBox, WordBox
+from boxes import (
+    AssignmentBox, AssignmentsBox, MainBox, RangeBox, IntBox, WordBox
+)
 
 pg = ParserGenerator(["ELLIPSIS", "EQUALS", "NUMBER", "WORD"])
 

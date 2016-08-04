@@ -1,0 +1,18 @@
+language: python
+python: "2.7"
+install:
+  - pip install rply
+  - pip install flake8
+  - python setup.py install
+  - mkdir -p pypy
+  - wget https://bitbucket.org/pypy/pypy/get/default.tar.bz2
+  - tar -xvvf default.tar.bz2 -C pypy --strip-components=1
+  - mkdir -p bin
+script:
+  - flake8
+  - divspl fizzbuzz.divspl
+  - python pypy/rpython/bin/rpython --output=bin/divspl divspl/target.py
+  - bin/divspl fizzbuzz.divspl
+cache:
+  - pip
+sudo: false

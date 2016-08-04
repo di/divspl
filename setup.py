@@ -7,7 +7,7 @@ def readme():
 
 setup(
     name='divspl',
-    version='0.0.2',
+    version='0.0.3',
     description="Dustin Ingram's Very Special Programming Language.",
     long_description=readme(),
     url='https://github.com/di/divspl',

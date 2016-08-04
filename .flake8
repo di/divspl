@@ -1,0 +1,3 @@
+[flake8]
+exclude = env, pypy, build
+import-order-style = google

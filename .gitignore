@@ -3,3 +3,6 @@ env
 build
 dist
 *.egg-info
+default.tar.bz2
+pypy
+bin

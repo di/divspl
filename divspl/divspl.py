@@ -1,15 +1,23 @@
 #!/usr/bin/env python
 
-import sys
+import os
 
 from parser import parser
 from lexer import lexer
 
 
 def main():
-    if len(sys.argv) > 1:
-        with open(sys.argv[1], 'r') as f:
+    import sys
+    begin(sys.argv)
+
+
+def begin(argv):
+    if len(argv) > 1:
+        with open(argv[1], 'r') as f:
             result = parser.parse(lexer.lex(f.read()))
-            sys.stdout.write(result.eval())
+            os.write(1, result.eval())
     else:
-        sys.stdout.write("Please provide a filename.")
+        os.write(1, "Please provide a filename.")
+
+if __name__ == '__main__':
+    main()

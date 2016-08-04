@@ -1,16 +1,19 @@
 from rply.token import BaseBox
 
 
-class ProgramBox(BaseBox):
-    def __init__(self, range_box, assignment_boxes):
+class MainBox(BaseBox):
+    def __init__(self, range_box, assignments):
         self.range_box = range_box
-        self.assignment_boxes = assignment_boxes
+        self.assignments = assignments
 
     def eval(self):
-        return "\n".join(
-            "".join(assignment.eval(i) for assignment in self.assignment_boxes) or str(i)
-            for i in self.range_box.eval()
-        ) + "\n"
+        lines = []
+        for i in self.range_box.range():
+            line = ""
+            for assignment in self.assignments.list():
+                line += assignment.eval_with(i)
+            lines.append(line or str(i))
+        return "\n".join(lines) + "\n"
 
 
 class AssignmentBox(BaseBox):
@@ -18,10 +21,21 @@ class AssignmentBox(BaseBox):
         self.word = word
         self.number = number
 
-    def eval(self, i):
-        if not i % int(self.number):
-            return self.word
+    def eval_with(self, i):
+        if not i % self.number.int():
+            return self.word.str()
         return ''
+
+
+class AssignmentsBox(BaseBox):
+    def __init__(self, assignments=None, assignment=None):
+        self.assignments = assignments
+        self.assignment = assignment
+
+    def list(self):
+        if self.assignments:
+            return self.assignments.list() + [self.assignment]
+        return []
 
 
 class RangeBox(BaseBox):
@@ -29,5 +43,21 @@ class RangeBox(BaseBox):
         self.low = low
         self.high = high
 
-    def eval(self):
-        return range(self.low, self.high + 1)
+    def range(self):
+        return range(self.low.int(), self.high.int() + 1)
+
+
+class IntBox(BaseBox):
+    def __init__(self, value):
+        self.value = int(value.getstr())
+
+    def int(self):
+        return self.value
+
+
+class WordBox(BaseBox):
+    def __init__(self, value):
+        self.value = value.getstr()
+
+    def str(self):
+        return self.value

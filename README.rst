@@ -10,9 +10,7 @@ Installation
 
     $ pip install divspl
 
-Or for local development:
-
-::
+Or for local development::
 
     $ virtualenv env
     $ source env/bin/activate
@@ -32,24 +30,18 @@ Where::
 Example
 =======
 
-Use the interpreter to execute valid DIVSPL code:
-
-::
+Use the interpreter to execute valid DIVSPL code::
 
     $ divspl fizzbuzz.divspl
 
-Or use it as a shebang:
-
-::
+Or use it as a shebang::
 
     #!env/bin/divspl
     1...15
     fizz=3
     buzz=5
 
-Then:
-
-::
+Then::
 
     $ ./fizzbuzz.divspl
 
@@ -59,6 +51,23 @@ Description
 `divspl` is an interpreter for the DIVSPL DSL (Dustin Ingram's Very Special
 Programming Language Domain Specific Language), which is used for implementing
 FizzBuzz-like programs.
+
+Compiling with RPython
+======================
+
+`divspl` is compatible with RPython. To compile::
+
+    $ pip install rply
+    $ mkdir -p pypy
+    $ wget https://bitbucket.org/pypy/pypy/get/default.tar.bz2
+    $ tar -xvvf default.tar.bz2 -C pypy --strip-components=1
+    $ mkdir -p bin
+    $ python pypy/rpython/bin/rpython --output=bin/divspl divspl/target.py
+
+You now have a compiled `divspl` binary in `./bin`, which you can use as
+follows::
+
+    $ bin/divspl fizzbuzz.divspl
 
 Contact
 =======

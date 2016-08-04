@@ -3,6 +3,13 @@ divspl (Dustin Ingram's Very Special Programming Language)
 
 An implementation of a FizzBuzz DSL using `rply <https://github.com/alex/rply>`_.
 
+Description
+===========
+
+``divspl`` is an interpreter for the DIVSPL DSL (Dustin Ingram's Very Special
+Programming Language Domain Specific Language), which is used for implementing
+FizzBuzz-like programs. For more information, see http://promptworks.com/blog/the-fastest-fizzbuzz-in-the-west.
+
 Installation
 ============
 
@@ -45,17 +52,12 @@ Then::
 
     $ ./fizzbuzz.divspl
 
-Description
-===========
-
-`divspl` is an interpreter for the DIVSPL DSL (Dustin Ingram's Very Special
-Programming Language Domain Specific Language), which is used for implementing
-FizzBuzz-like programs.
 
 Compiling with RPython
 ======================
 
-`divspl` is compatible with RPython. To compile::
+``divspl`` is compatible with `RPython <https://rpython.readthedocs.io>`__. To
+compile::
 
     $ pip install rply
     $ mkdir -p pypy
@@ -64,7 +66,7 @@ Compiling with RPython
     $ mkdir -p bin
     $ python pypy/rpython/bin/rpython --output=bin/divspl divspl/target.py
 
-You now have a compiled `divspl` binary in `./bin`, which you can use as
+You now have a compiled ``divspl`` binary in ``./bin``, which you can use as
 follows::
 
     $ bin/divspl fizzbuzz.divspl

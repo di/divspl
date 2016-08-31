@@ -77,7 +77,7 @@ Contact
 :On PyPI:
     http://pypi.python.org/pypi/divspl/
 
-:Souce:
+:Source:
     https://github.com/di/divspl
 
 :Issues:

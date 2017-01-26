@@ -1,5 +1,5 @@
 from rply import ParserGenerator
-from boxes import (
+from divspl.boxes import (
     AssignmentBox, AssignmentsBox, MainBox, RangeBox, IntBox, WordBox
 )
 

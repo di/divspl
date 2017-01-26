@@ -1,8 +1,8 @@
-import divspl
+from divspl import main
 
 
 def entry_point(argv):
-    divspl.begin(argv)
+    main.begin(argv)
     return 0
 
 

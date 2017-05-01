@@ -8,9 +8,9 @@ class MainBox(BaseBox):
 
     def eval(self):
         lines = []
-        for i in self.range_box.range():
+        for i in self.range_box.getrange():
             line = ""
-            for assignment in self.assignments.list():
+            for assignment in self.assignments.getlist():
                 line += assignment.eval_with(i)
             lines.append(line or str(i))
         return "\n".join(lines) + "\n"
@@ -22,8 +22,8 @@ class AssignmentBox(BaseBox):
         self.number = number
 
     def eval_with(self, i):
-        if not i % self.number.int():
-            return self.word.str()
+        if not i % self.number.getint():
+            return self.word.getstr()
         return ''
 
 
@@ -32,9 +32,9 @@ class AssignmentsBox(BaseBox):
         self.assignments = assignments
         self.assignment = assignment
 
-    def list(self):
+    def getlist(self):
         if self.assignments:
-            return self.assignments.list() + [self.assignment]
+            return self.assignments.getlist() + [self.assignment]
         return []
 
 
@@ -43,21 +43,21 @@ class RangeBox(BaseBox):
         self.low = low
         self.high = high
 
-    def range(self):
-        return range(self.low.int(), self.high.int() + 1)
+    def getrange(self):
+        return range(self.low.getint(), self.high.getint() + 1)
 
 
 class IntBox(BaseBox):
     def __init__(self, value):
-        self.value = int(value.getstr())
+        self.value = value
 
-    def int(self):
-        return self.value
+    def getint(self):
+        return int(self.value.getstr())
 
 
 class WordBox(BaseBox):
     def __init__(self, value):
-        self.value = value.getstr()
+        self.value = value
 
-    def str(self):
-        return self.value
+    def getstr(self):
+        return self.value.getstr()

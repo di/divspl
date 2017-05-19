@@ -22,9 +22,9 @@ class AssignmentBox(BaseBox):
         self.number = number
 
     def eval_with(self, i):
-        if not i % self.number.getint():
-            return self.word.getstr()
-        return ''
+        if i % self.number.getint():
+            return ''
+        return self.word.getstr()
 
 
 class AssignmentsBox(BaseBox):

@@ -13,7 +13,7 @@ class MainBox(BaseBox):
             for assignment in self.assignments.getlist():
                 line += assignment.eval_with(i)
             lines.append(line or str(i))
-        return "\n".join(lines) + "\n"
+        return lines
 
 
 class AssignmentBox(BaseBox):

@@ -22,7 +22,8 @@ def begin(argv):
     if len(argv) > 1:
         with open(argv[1], 'r') as f:
             result = parser.parse(lexer.lex(f.read()))
-            os.write(1, _bytes(result.eval()))
+            for number in result.eval():
+                os.write(1, _bytes(number))
     else:
         os.write(1, _bytes("Please provide a filename."))
 
